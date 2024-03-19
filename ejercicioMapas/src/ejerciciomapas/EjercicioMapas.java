@@ -22,6 +22,7 @@ public class EjercicioMapas {
         map.put("Ivan", 9);
         map.put("Alvaro", 5);
         map.put("Monica", 2);
+        map.put("Pepe", 10);
         int sumatotal = 0;
         double media = 0;
         for (int clavenota: map.values()) {

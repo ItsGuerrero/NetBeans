@@ -15,6 +15,11 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
     }
+    
+    public Ventana(String texto){
+        initComponents();
+        jTextField1.setText(texto);   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +40,6 @@ public class Ventana extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre:");
 
-        jTextField1.setText("Alvaro Cisneros");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -93,6 +97,7 @@ public class Ventana extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String texto = jTextField1.getText();
         jTextArea1.setText(texto);
+        Ventana v2 = new Ventana(jTextField1.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

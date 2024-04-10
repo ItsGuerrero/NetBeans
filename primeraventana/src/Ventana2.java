@@ -21,6 +21,8 @@ ArrayList <Persona> personas = new ArrayList<>();
         this.setSize(500, 500);
         jButton2.setVisible(false);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -228,7 +230,7 @@ ArrayList <Persona> personas = new ArrayList<>();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Ventana v = new Ventana();
+        Ventana v = new Ventana(jTextField1.getText());
         v.setVisible(true);
         v.setSize(500, 500);
     }//GEN-LAST:event_jButton3ActionPerformed

@@ -1,8 +1,10 @@
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -37,4 +39,18 @@ public class Controladora {
     }
     return personas;
 }
+    public void escribirarchivo(ArrayList<Persona> personas){
+        File f = new File("personas.txt");
+        try{
+        BufferedWriter bw = new BufferedWriter(new FileWriter(f, false));
+        for (int i = 0; i < personas.size(); i++) {
+            bw.write(personas.get(i).getNombre() + " " + personas.get(i).getEdad());
+            bw.newLine();
+        }
+        }
+        catch(IOException e4){
+            System.out.println("No se puede leer");
+        }
+        
+    }
 }

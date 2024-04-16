@@ -6,19 +6,21 @@ import javax.swing.table.DefaultTableModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Medac
  */
 public class Ventana extends javax.swing.JFrame {
 
+    Controladora con = new Controladora();
+    ArrayList<Persona> personas = con.Leerarchivo();
+
     /**
      * Creates new form Ventana
      */
     public Ventana() {
         initComponents();
-        
+
     }
 
     /**
@@ -103,28 +105,26 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controladora con = new Controladora();
-        ArrayList<Persona> personas = con.Leerarchivo();
+
         DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
         modelo.setRowCount(0);
-        String[]array = {"Nombre", "Edad"};
+        String[] array = {"Nombre", "Edad"};
         modelo.setColumnIdentifiers(array);
         jTable1.setModel(modelo);
-        for (Persona p: personas) {
-            Object [] fila = {p.getNombre(),p.getEdad()};
+        for (Persona p : personas) {
+            Object[] fila = {p.getNombre(), p.getEdad()};
             modelo.addRow(fila);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Crear c = new Crear();
+        Crear c = new Crear(personas);
         c.setVisible(true);
         c.setSize(500, 500);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        modelo.setRowCount(jTable1.getRowCount() + 1);
+        con.escribirarchivo(personas);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

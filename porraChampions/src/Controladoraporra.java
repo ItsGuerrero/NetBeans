@@ -17,11 +17,11 @@ import java.util.ArrayList;
  *
  * @author Medac
  */
-public class Controladora {
-    ArrayList <Persona> personas = new ArrayList<>();
+public class Controladoraporra {
+    ArrayList <Persona> personas  = new ArrayList<>();
     
     public ArrayList <Persona> Leerarchivo(){
-        File file = new File("personas.txt");
+        File file = new File("resultados.txt");
         try{
         BufferedReader br = new BufferedReader(new FileReader(file));
         String texto = br.readLine();
@@ -39,19 +39,33 @@ public class Controladora {
     }
     return personas;
 }
-    public void escribirarchivo(ArrayList<Persona> personas){
-        File f = new File("personas.txt");
+    
+    public void escribirarchivo(ArrayList<Persona> personas) {
+        File f = new File("resultados.txt");
         try{
-        BufferedWriter bw = new BufferedWriter(new FileWriter(f, false));
-        for (int i = 0; i < personas.size(); i++) {
-            bw.write(personas.get(i).getNombre() + " " + personas.get(i).getEdad());
-            bw.newLine();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(f, false));
+            for (int i = 0; i < personas.size(); i++) {
+                bw.write(personas.get(i).getNombre() + " " + personas.get(i).getResultado());
+                bw.newLine();
+            }
+            bw.close();
         }
-        bw.close();
-        }
-        catch(IOException e4){
+        catch(IOException e3){
             System.out.println("No se puede leer");
         }
-        
+    }
+
+    boolean Comprobar(String resultado, ArrayList<Persona> personas) {
+        int cont = 0;
+        for (int i = 0; i < personas.size(); i++) {
+            if (personas.get(i).getResultado().equals(resultado)) {
+                cont++;
+            }
+        }
+        if (cont < 2) {
+            return true;
+        } else{
+            return false;
+        }
     }
 }

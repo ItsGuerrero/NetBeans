@@ -1,5 +1,8 @@
 
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,6 +16,10 @@ import java.util.ArrayList;
 public class Marcador extends javax.swing.JFrame {
 Persona j1;
 Persona j2;
+ImageIcon icon = new ImageIcon("trophy.png");
+Image image = icon.getImage();
+Image newimg = image.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+ImageIcon trofeo = new ImageIcon(newimg);
     
     /**
      * Creates new form Marcador
@@ -182,7 +189,11 @@ Persona j2;
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if (j1.getPuntuacion() > j2.getPuntuacion()) {
-            
+            JOptionPane.showMessageDialog(this, "El ganador es: " + j1.getNombre(), "Titulo", JOptionPane.INFORMATION_MESSAGE, trofeo);
+        } else if(j1.getPuntuacion() < j2.getPuntuacion()){
+            JOptionPane.showMessageDialog(null, "El ganador es: " + j2.getNombre(), "Titulo", JOptionPane.INFORMATION_MESSAGE, trofeo);
+        } else{
+            JOptionPane.showMessageDialog(null, "Empate", "Titulo", JOptionPane.INFORMATION_MESSAGE, trofeo);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 

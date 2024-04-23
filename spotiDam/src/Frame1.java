@@ -7,13 +7,14 @@
  *
  * @author Medac
  */
-public class Ventana extends javax.swing.JFrame {
-
+public class Frame1 extends javax.swing.JFrame {
+    String user;
     /**
-     * Creates new form Ventana
+     * Creates new form Ventana1
      */
-    public Ventana() {
+    public Frame1() {
         initComponents();
+        this.setSize(715,372);
     }
 
     /**
@@ -28,60 +29,48 @@ public class Ventana extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setText("NOMBRE JUGADOR 2:");
+        jLabel1.setText("USER:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(31, 166, 299, 44);
+        jLabel1.setBounds(25, 82, 93, 35);
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel2.setText("NOMBRE JUGADOR 1:");
+        jLabel2.setText("PASSWORD:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(34, 98, 299, 44);
+        jLabel2.setBounds(25, 160, 185, 35);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(348, 178, 195, 31);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(348, 105, 195, 31);
+        jTextField1.setBounds(136, 82, 178, 35);
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("RESET");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(348, 276, 189, 80);
-
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("PLAY");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jPasswordField1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(69, 277, 189, 80);
-
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("SALIR");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(624, 276, 189, 80);
+        getContentPane().add(jPasswordField1);
+        jPasswordField1.setBounds(216, 160, 170, 35);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        String myPass=String.valueOf(jPasswordField1.getPassword());
+        user = "admin";
+        if (myPass.equalsIgnoreCase("admin") && jTextField1.getText().equals(user)) {
+            Frame2 f = new Frame2(user);
+            f.setVisible(true);
+            f.setSize(863,494);
+            f.setLocationRelativeTo(null);
+            dispose();
+        } else{
+            jTextField1.setText(" ");
+            jPasswordField1.setText(" ");
+        }
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,31 +89,29 @@ public class Ventana extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Ventana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Frame1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana().setVisible(true);
+                new Frame1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

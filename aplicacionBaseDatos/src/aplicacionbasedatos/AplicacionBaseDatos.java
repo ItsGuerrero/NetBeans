@@ -35,17 +35,37 @@ public class AplicacionBaseDatos {
         Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BD + "?user="+ USUARIO + "&password=" + PASS + "&useLegacyDatetimeCode=false&serverTimezone=" + zonaHoraria.getID());
         
         
-        //Crear tabla
+//        //Crear tabla
+//        
+//        PreparedStatement st = null;
+//        try{
+//            st = connection.prepareStatement("CREATE TABLE paises (pais varchar(50) NOT NULL, acronimo CHAR(3), poblacion INT(20))");
+//            st.execute();
+//            st.close();
+//        }
+//        catch(SQLException sqle){
+//            System.out.println("Error" + sqle.getMessage());
+//        }
         
-        PreparedStatement st = null;
+        String consulta = "INSERT INTO paises (pais, acronimo, poblacion) VALUES ('Spain', 'S', 5)";
         try{
-            st = connection.prepareStatement("CREATE TABLE paises (pais varchar(50) NOT NULL, acronimo CHAR(3), poblacion INT(20))");
-            st.execute();
-            st.close();
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(consulta);
         }
-        catch(SQLException sqle){
-            System.out.println("Error" + sqle.getMessage());
+        catch(SQLException e){
+            e.printStackTrace();
         }
+        
+        consulta = "SELECT * FROM paises ORDER BY pais";
+        Statement stmt = connection.createStatement();
+        ResultSet rset = stmt.executeQuery(consulta);
+        while(rset.next()){
+            String nombre = rset.getString("Pais");
+            int pob = rset.getInt("poblacion");
+            System.out.println(nombre + " " + pob);
+            
+        }
+        connection.close();
     }
     
 }
